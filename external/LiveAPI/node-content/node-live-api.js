@@ -31,7 +31,7 @@ maxApi.addHandler('port', async (port) => {
 
 		uws = uWS.App().ws('/ableton-live', {
 			idleTimeout: 12,
-			// maxPayloadLength: 16 * 1024 * 1024,
+			maxPayloadLength: 16 * 1024 * 1024,
 			// maxBackpressure: 1024,
 
 			open: (ws) => {
@@ -85,6 +85,9 @@ maxApi.addHandler('port', async (port) => {
 				} catch (error) {
 					console.error(error);
 				}
+			},
+			drain: (ws) => {
+				console.log('[uWebSockets] Backpressure: ' + ws.getBufferedAmount());
 			},
 		});
 

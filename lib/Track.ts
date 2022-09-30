@@ -503,18 +503,34 @@ export class Track extends Properties<
 	 * @memberof Track
 	 * @return {(Promise<(Clip | null)>)}
 	 */
-	async getClip(scene: number): Promise<(Clip | null)> {
+	async getClip(scene: number): Promise<Clip | null> {
 		const clipSlots = await this.children('clip_slots');
 
 		if (scene < 1 || scene > clipSlots.length) return Promise.reject(null);
 
 		const clipSlot = clipSlots[scene - 1];
 
-		if (!clipSlot.hasClip) {
-			return await clipSlot.createClip();
-		}
-
 		return await clipSlot.clip();
+	}
+
+	/**
+	 * Get a specific clip based on Scene number and creates one if there's none
+	 *
+	 * @memberof Track
+	 * @param {number} scene
+	 * @param {number} [length=4]
+	 * @return {(Promise<Clip>)}
+	 */
+	async getOrCreateClip(scene: number, length: number = 4): Promise<Clip> {
+		const clipSlots = await this.children('clip_slots');
+
+		if (scene < 1 || scene > clipSlots.length) return Promise.reject(null);
+
+		const clipSlot = clipSlots[scene - 1];
+
+		if (!clipSlot.hasClip) return await clipSlot.createClip(length);
+
+		return (await clipSlot.clip()) as Clip;
 	}
 
 	/**
