@@ -4,12 +4,10 @@ import { RawSceneKeys, RawScene, Scene } from './Scene';
 import { Clip, RawClipKeys, RawClip } from './Clip';
 import { ClipSlot, RawClipSlotKeys, RawClipSlot } from './ClipSlot';
 import { DeviceParameter, RawDeviceParameterKeys, RawDeviceParameter } from './DeviceParameter';
-import AbletonLiveBase from './AbletonLiveBase';
-
+import { AbletonLiveBase } from './AbletonLiveBase';
 
 // TODO Missing properties
 // > selected_chain
-
 
 /**
  * @interface SongViewGetProperties
@@ -193,6 +191,6 @@ export class SongView extends Properties<
 	 * @return {Promise<void>}
 	 */
 	public async selectDevice(id: number): Promise<void> {
-		return this.call('select_device', [ `id ${id}` ]);
+		return this.call('select_device', [`id ${id}`]);
 	}
 }

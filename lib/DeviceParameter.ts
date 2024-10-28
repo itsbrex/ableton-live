@@ -1,5 +1,4 @@
-import { AbletonLive } from '.';
-import AbletonLiveBase from './AbletonLiveBase';
+import { AbletonLiveBase } from './AbletonLiveBase';
 import { Properties } from './Properties';
 
 export enum AutomationState {
@@ -112,7 +111,7 @@ export interface RawDeviceParameter {
 	is_quantized: boolean;
 }
 
-export const RawDeviceParameterKeys = [ 'name', 'value', 'is_quantized' ];
+export const RawDeviceParameterKeys = ['name', 'value', 'is_quantized'];
 
 /**
  * This class represents an (automatable) parameter within a MIDI or audio device.
@@ -140,7 +139,11 @@ export class DeviceParameter extends Properties<
 	 * @param {string} [path]
 	 * @memberof DeviceParameter
 	 */
-	constructor(ableton: AbletonLiveBase, public raw: RawDeviceParameter, path?: string) {
+	constructor(
+		ableton: AbletonLiveBase,
+		public raw: RawDeviceParameter,
+		path?: string
+	) {
 		super(ableton, 'device_parameter', path ? path : DeviceParameter.path);
 
 		this._id = raw.id;
@@ -179,7 +182,7 @@ export class DeviceParameter extends Properties<
 	 * @memberof DeviceParameter
 	 */
 	public async strForValue(value: number): Promise<string> {
-		return this.call('str_for_value', [ value ]);
+		return this.call('str_for_value', [value]);
 	}
 
 	/**

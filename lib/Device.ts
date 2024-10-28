@@ -1,7 +1,6 @@
 import { RawDeviceParameterKeys, DeviceParameter, RawDeviceParameter } from './DeviceParameter';
 import { Properties } from './Properties';
-import { AbletonLive } from './AbletonLive';
-import AbletonLiveBase from './AbletonLiveBase';
+import { AbletonLiveBase } from './AbletonLiveBase';
 
 export enum DeviceType {
 	AudioEffect = 'audio_effect',
@@ -87,7 +86,7 @@ export interface RawDevice {
 	class_display_name: string;
 }
 
-export const RawDevice = [ 'name', 'type', 'class_name', 'class_display_name' ];
+export const RawDevice = ['name', 'type', 'class_name', 'class_display_name'];
 
 const initialProps = {
 	parameters: RawDeviceParameterKeys,
@@ -112,7 +111,11 @@ export class Device extends Properties<
 	private _className: string;
 	private _classDisplayName: string;
 
-	constructor(ableton: AbletonLiveBase, public raw: RawDevice, path?: string) {
+	constructor(
+		ableton: AbletonLiveBase,
+		public raw: RawDevice,
+		path?: string
+	) {
 		super(ableton, 'device', path ? path : Device.path, initialProps);
 
 		this._id = parseInt(raw.id, 10);

@@ -1,7 +1,7 @@
 import { Properties } from './Properties';
 import { Track, RawTrackKeys, RawTrack, TrackType } from './Track';
 import { RawSceneKeys, RawScene, Scene } from './Scene';
-import AbletonLiveBase from './AbletonLiveBase';
+import { AbletonLiveBase } from './AbletonLiveBase';
 import { CuePoint, RawCuePoint, RawCuePointKeys } from './CuePoint';
 
 export interface SongGetProperties {
@@ -123,7 +123,6 @@ export interface SongGetProperties {
 	 */
 	record_mode: number;
 	/**
-	 * The root note of the song used for control surfaces.<br/>
 	 * The root note can be a number between 0 and 11, where 0 = C and 11 = B.
 	 */
 	root_note: number;
@@ -131,6 +130,10 @@ export interface SongGetProperties {
 	 * The last used scale name used for control surfaces
 	 */
 	scale_name: ScaleName;
+	/**
+	 * Access to the Scale Mode setting in Live.
+	 */
+	scale_mode: boolean;
 	/**
 	 * A list of integers representing the intervals in the current scale, expressed as the interval between the first scale degree and the scale degree at the list index.
 	 */
@@ -313,6 +316,10 @@ export interface SongSetProperties {
 	 */
 	scale_name: ScaleName;
 	/**
+	 * @inheritdoc SongGetProperties.scale_mode
+	 */
+	scale_mode: boolean;
+	/**
 	 * @inheritdoc SongGetProperties.scenes
 	 */
 	scenes: number;
@@ -460,9 +467,17 @@ export interface SongObservableProperties {
 	 */
 	record_mode: number;
 	/**
+	 * @inheritdoc SongGetProperties.root_note
+	 */
+	root_note: number;
+	/**
 	 * @inheritdoc SongGetProperties.scale_name
 	 */
 	scale_name: ScaleName;
+	/**
+	 * @inheritdoc SongGetProperties.scale_mode
+	 */
+	scale_mode: boolean;
 	/**
 	 * @inheritdoc SongGetProperties.scale_intervals
 	 */

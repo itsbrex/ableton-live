@@ -4,12 +4,17 @@
 	"type": "module",
 	"main": "./build/esm/node.mjs",
 	"module": "./build/esm/index.mjs",
-	"browser": "./build/esm/index.mjs",
+	"typings": "./build/types/index.d.ts",
 	"exports": {
 		".": {
-			"require": "./build/cjs/index.cjs",
-			"node": "./build/esm/node.mjs",
-			"default": "./build/esm/index.mjs"
+			"import": {
+				"types": "./build/types/index.d.ts",
+				"default": "./build/esm/node.mjs"
+			},
+			"require": {
+				"types": "./build/types/index.d.ts",
+				"default": "./build/cjs/index.cjs"
+			}
 		}
 	},
 	"types": "./build/types/index.d.ts",
@@ -27,7 +32,7 @@
 		"lint:quiet": "eslint lib  --quiet",
 		"prepare": "npm run build",
 		"cleanup": "rimraf ./build",
-		"types": "tsc --emitDeclarationOnly --outDir build/types",
+		"types": "tsc --emitDeclarationOnly --outDir build/types && cp build/types/index.d.ts build/types/index.d.mts",
 		"docs": "typedoc"
 	},
 	"files": [

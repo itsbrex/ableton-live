@@ -1,6 +1,6 @@
 import { Properties } from './Properties';
 import { RawClipKeys, RawClip, Clip } from './Clip';
-import AbletonLiveBase from './AbletonLiveBase';
+import {AbletonLiveBase} from './AbletonLiveBase';
 
 /**
  * Equals 0 if this is not a clip slot of a Group Track.

@@ -1,6 +1,6 @@
 import { Properties } from './Properties';
 import { RawClipSlotKeys, ClipSlot, RawClipSlot } from './ClipSlot';
-import AbletonLiveBase from './AbletonLiveBase';
+import { AbletonLiveBase } from './AbletonLiveBase';
 
 /**
  * @interface SceneGetProperties
@@ -106,7 +106,7 @@ export interface RawScene {
 /**
  * @private
  */
-export const RawSceneKeys = [ 'name', 'isEmpty' ];
+export const RawSceneKeys = ['name', 'isEmpty'];
 
 const childrenInitialProps = {
 	clip_slots: RawClipSlotKeys,
@@ -141,7 +141,11 @@ export class Scene extends Properties<
 	 * @param {string} [path]
 	 * @memberof Scene
 	 */
-	constructor(ableton: AbletonLiveBase, public raw: RawScene, path?: string) {
+	constructor(
+		ableton: AbletonLiveBase,
+		public raw: RawScene,
+		path?: string
+	) {
 		super(ableton, 'scene', path ?? raw.path, childrenInitialProps);
 
 		this._id = parseInt(raw.id, 10);
@@ -188,7 +192,7 @@ export class Scene extends Properties<
 	 * @return {void}
 	 */
 	public async fire(forceLegato?: boolean, canSelectSceneOnLaunch?: boolean): Promise<void> {
-		return this.call('fire', [ forceLegato, canSelectSceneOnLaunch ]);
+		return this.call('fire', [forceLegato, canSelectSceneOnLaunch]);
 	}
 
 	/**
@@ -203,7 +207,7 @@ export class Scene extends Properties<
 	 * @return {void}
 	 */
 	public async fireAsSelected(forceLegato?: boolean): Promise<void> {
-		return this.call('fire_as_selected', [ forceLegato ]);
+		return this.call('fire_as_selected', [forceLegato]);
 	}
 
 	/**
@@ -214,7 +218,7 @@ export class Scene extends Properties<
 	 * @return {void}
 	 */
 	public async setFireButtonState(state: boolean): Promise<void> {
-		return this.call('set_fire_button_state', [ state ]);
+		return this.call('set_fire_button_state', [state]);
 	}
 	/**
 	 * @private

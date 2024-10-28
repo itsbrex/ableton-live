@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 6,
-			"revision" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 94.0, 110.0, 1161.0, 978.0 ],
+		"rect" : [ 94.0, 105.0, 1161.0, 978.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -900,6 +900,8 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
+						"node_bin_path" : "",
+						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
@@ -977,14 +979,14 @@
 					"numinlets" : 9,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 498.5, 1305.699951000000056, 432.874999999999773, 20.0 ],
+					"patching_rect" : [ 498.5, 1305.699951000000056, 418.111111111111313, 20.0 ],
 					"saved_object_attributes" : 					{
-						"filename" : "live-api.js",
+						"filename" : "live-api-release.js",
 						"parameter_enable" : 1
 					}
 ,
 					"style" : "PLAYA",
-					"text" : "js live-api.js @parameter_enable 1",
+					"text" : "js live-api-release.js @parameter_enable 1",
 					"varname" : "js"
 				}
 
@@ -1670,7 +1672,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "live-api.js",
+				"name" : "live-api-release.js",
 				"bootpath" : "~/Projects/js/audio/ableton-live/external/LiveAPI/code",
 				"patcherrelativepath" : "../code",
 				"type" : "TEXT",

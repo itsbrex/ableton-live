@@ -1,6 +1,5 @@
 import { Properties } from './Properties';
-import AbletonLiveBase from './AbletonLiveBase';
-
+import { AbletonLiveBase } from './AbletonLiveBase';
 
 export interface CuePointGetProperties {
 	name: string;
@@ -37,13 +36,7 @@ export interface RawCuePoint {
  */
 export const RawCuePointKeys = ['name', 'time'];
 
-export class CuePoint extends Properties<
-	CuePointGetProperties,
-	null,
-	null,
-	CuePointSetProperties,
-	ObservableProperties
-> {
+export class CuePoint extends Properties<CuePointGetProperties, null, null, CuePointSetProperties, ObservableProperties> {
 	static path = 'live_set cue_points N';
 
 	/**

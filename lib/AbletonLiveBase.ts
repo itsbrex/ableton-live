@@ -1,3 +1,4 @@
+import { Song, SongView } from '.';
 import { EventEmitter, TypedEventEmitter } from './helpers/EventEmitter';
 
 interface ConnectionEvents {
@@ -28,9 +29,12 @@ interface ConnectionEvents {
 // }
 
 
-abstract class AbletonLiveBase extends (EventEmitter as new () => TypedEventEmitter<ConnectionEvents>) {
+export abstract class AbletonLiveBase extends (EventEmitter as new () => TypedEventEmitter<ConnectionEvents>) {
 	// abstract connect(): void;
 	// abstract disconnect(): void;
+
+	abstract song: Song;
+	abstract songView: SongView;
 
 	abstract get(path: string, prop: string, liveObjectId?: number): Promise<any>;
 
@@ -59,4 +63,3 @@ abstract class AbletonLiveBase extends (EventEmitter as new () => TypedEventEmit
 	abstract callMultiple(path: string, calls: any[][], liveObjectId?: number, timeout?: number): Promise<any>;
 }
 
-export default AbletonLiveBase;

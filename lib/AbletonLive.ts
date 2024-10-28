@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { Song } from './Song';
 
 import { SongView } from './SongView';
-import AbletonLiveBase from './AbletonLiveBase';
+import {AbletonLiveBase} from './AbletonLiveBase';
 
 interface Command {
 	path: string;

@@ -1,7 +1,7 @@
 import { Properties } from './Properties';
 import { Note, SerializedNote } from './Note';
 import { ClipView } from './ClipView';
-import AbletonLiveBase from './AbletonLiveBase';
+import { AbletonLiveBase } from './AbletonLiveBase';
 
 // TODO Missing properties
 // > groove
@@ -516,7 +516,11 @@ export class Clip extends Properties<
 	 * @param {string} [path]
 	 * @memberof Clip
 	 */
-	constructor(ableton: AbletonLiveBase, public raw: RawClip, path?: string) {
+	constructor(
+		ableton: AbletonLiveBase,
+		public raw: RawClip,
+		path?: string
+	) {
 		super(ableton, 'clip', path ?? raw.path);
 
 		this._id = parseInt(raw.id, 10);

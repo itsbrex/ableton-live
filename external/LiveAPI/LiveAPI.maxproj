@@ -2,7 +2,7 @@
 	"name" : "LiveAPI",
 	"version" : 1,
 	"creationdate" : 3705557956,
-	"modificationdate" : 3811665486,
+	"modificationdate" : 3812946819,
 	"viewrect" : [ 158.0, 146.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -32,17 +32,17 @@
 				"local" : 1
 			}
 ,
-			"live-api.js" : 			{
-				"kind" : "javascript",
-				"local" : 1
-			}
-,
 			"resize_n4m_monitor_patcher.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
 			}
 ,
 			"node-live-api.js" : 			{
+				"kind" : "javascript",
+				"local" : 1
+			}
+,
+			"live-api-release.js" : 			{
 				"kind" : "javascript",
 				"local" : 1
 			}

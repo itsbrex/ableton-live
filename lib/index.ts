@@ -1,4 +1,5 @@
 export * from './AbletonLive';
+export * from './AbletonLiveBase';
 export * from './AbletonLiveOffline';
 export * from './Clip';
 export * from './ClipSlot';

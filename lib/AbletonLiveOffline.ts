@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { Song } from './Song';
 import { SongView } from './SongView';
-import AbletonLiveBase from './AbletonLiveBase';
+import { AbletonLiveBase } from './AbletonLiveBase';
 
 type Listener = (data: any) => any;
 type Callback = (err: Error | null, data?: any) => any;
@@ -64,8 +64,6 @@ export class AbletonLiveOffline extends AbletonLiveBase {
 		try {
 			const data: Response = JSON.parse(message);
 
-			console.log("data", data);
-			console.log('message', message);
 			const callback = this.messageBus.get(data.uuid);
 
 			if (this._logRequests) console.log(data);

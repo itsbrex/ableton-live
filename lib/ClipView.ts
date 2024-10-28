@@ -1,5 +1,5 @@
 import { Properties } from './Properties';
-import AbletonLiveBase from './AbletonLiveBase';
+import { AbletonLiveBase } from './AbletonLiveBase';
 
 /**
  * @interface ClipViewGetProperties

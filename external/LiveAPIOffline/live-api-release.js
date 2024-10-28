@@ -6,7 +6,7 @@
 var apis = {};
 var callbackEvents = {};
 
-var debugMode = true;
+var debugMode = false;
 
 inlets = 9;
 outlets = 1;

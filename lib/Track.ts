@@ -4,7 +4,7 @@ import { RawClipSlotKeys, RawClipSlot, ClipSlot } from './ClipSlot';
 import { DeviceParameter } from './DeviceParameter';
 import { Device, RawDevice } from './Device';
 import { Clip } from './Clip';
-import AbletonLiveBase from './AbletonLiveBase';
+import { AbletonLiveBase } from './AbletonLiveBase';
 
 // TODO Missing properties
 // > input_routing_channel: dictionary;
@@ -525,8 +525,6 @@ export class Track extends Properties<
 	 */
 	async getOrCreateClip(scene: number, length: number = 4): Promise<Clip> {
 		const clipSlots = await this.children('clip_slots');
-
-		console.log(scene, clipSlots.length);
 
 		if (scene < 1 || scene > clipSlots.length) return Promise.reject(null);
 

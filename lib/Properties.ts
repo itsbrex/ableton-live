@@ -1,5 +1,4 @@
-import AbletonLiveBase from './AbletonLiveBase';
-import { AbletonLive } from './index';
+import { AbletonLiveBase } from './AbletonLiveBase';
 
 interface ChildrenInitialProps {
 	name: string;
@@ -90,7 +89,13 @@ export class Properties<GP, CP, TP, SP, OP> {
 	}
 
 	async set<T extends keyof SP>(prop: T, value: SP[T]): Promise<null> {
-		return this.ableton.set(this.path, prop as string, value, this._id);
+		let val = value;
+
+		if (typeof value === 'boolean') {
+			val = value ? 1 : (0 as any);
+		}
+
+		return this.ableton.set(this.path, prop as string, val, this._id);
 	}
 
 	async observe<T extends keyof OP | keyof CP>(
@@ -136,22 +141,12 @@ export class Properties<GP, CP, TP, SP, OP> {
 	}
 }
 
-type PropertyType<TName extends keyof CP, TP, CP> = TName extends keyof TP
-	? TP[TName]
-	: CP[TName];
+type PropertyType<TName extends keyof CP, TP, CP> = TName extends keyof TP ? TP[TName] : CP[TName];
 
-type FlatPropertyType<TName extends keyof CP, TP, CP> = TName extends keyof TP
-	? Flatten<TP[TName]>
-	: Flatten<CP[TName]>;
+type FlatPropertyType<TName extends keyof CP, TP, CP> = TName extends keyof TP ? Flatten<TP[TName]> : Flatten<CP[TName]>;
 
 type Flatten<T> = T extends Array<infer U> ? Flatten<U> : T;
 
 type OnlyKeysWithArrayValues<T, TLookUp> = {
-    [K in keyof T]: K extends keyof TLookUp
-        ? TLookUp[K] extends Array<any>
-            ? K
-            : never
-        : T[K] extends Array<any>
-        ? K
-        : never;
+	[K in keyof T]: K extends keyof TLookUp ? (TLookUp[K] extends Array<any> ? K : never) : T[K] extends Array<any> ? K : never;
 }[keyof T];
